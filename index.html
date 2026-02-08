@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!-- Where scripts and metadata go  -->
+  <script src="lib/p5.min.js"></script>
+  <script src="lib/p5.dom.js"></script>
+
+  <!--App Core-->
+  <script src="sketch.js"></script>
+  <script src="toolbox.js"></script>
+  <script src="helperFunctions.js"></script>
+
+  <!--Tools-->
+  <script src="tools/colourPalette.js"></script>
+  <script src="tools/freehandTool.js"></script>
+  <script src="tools/lineToTool.js"></script>
+  <script src="tools/mirrorDrawTool.js"></script>
+  <script src="tools/sprayCanTool.js"></script>
+  <script src="tools/eraserTool.js"></script>
+  <script src="tools/stampTool.js"></script>
+  <script src="tools/colorPickerTool.js"></script>
+  <script src="tools/shapeTool.js"></script>
+  <script src="tools/perspectiveTool.js"></script>
+
+  <!--Color Wheel-->
+  <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+  <script src="tools/colorWheel.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="box header"> Drawing App
+      <button id="clearButton">Clear</button>
+      <button id="saveImageButton">Save Image</button>
+      <select id="exportFormat" style="margin-left:8px;">
+        <option value="png">PNG</option>
+        <option value="jpeg">JPEG</option>
+      </select>
+      <button id="undoButton">Undo</button>
+      <button id="redoButton">Redo</button>
+      <input type="file" id="importImageInput" accept="image/*" style="margin-left:8px;">
+    </div>
+
+    <div class="box" id="sidebar"></div>
+    <div id="content"></div>
+    <div class="box options"></div>
+    <div class="box colourPalette"></div>
+    <div id="colorWheelPanel">
+      <div id="colorWheelHeader">🎨 Color Picker <span id="closeColorWheel">✖</span></div>
+      <div id="colorWheelContainer"></div>
+    </div>
+  </div>
+</body>
+
+</html>
