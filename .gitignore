@@ -7,6 +7,6 @@ obj/
 *.sln.docstates
 .vscode/
 
-echo ".DS_Store" >> .gitignore
-echo ".DS_Store?" >> .gitignore
-echo "**/.DS_Store" >> .gitignore
+.DS_Store
+.DS_Store?
+**/.DS_Store
