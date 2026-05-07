@@ -33,8 +33,8 @@ DrawApp runs entirely in the browser — no build step or install needed.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Katerina137/DrawApp.git
-   cd DrawApp
+   git clone https://github.com/Katerina137/draw-app.git
+   cd draw-app
    ```
 
 2. Serve the files with any local server. For example, with VS Code:
