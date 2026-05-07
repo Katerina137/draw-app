@@ -1,65 +1,114 @@
-# DrawApp
+# DrawApp 🎨
 
-DrawApp is a versatile drawing application designed to provide users with a user-friendly interface for creating stunning visual art. This README.md serves as a comprehensive guide to using, troubleshooting, and contributing to the DrawApp project.
+A browser-based drawing application built with [p5.js](https://p5js.org/), featuring a rich set of creative tools, a colour palette, undo/redo history, and image import/export — all running entirely in the browser with no backend required.
 
-## Table of Contents
-- [Screenshots](#screenshots)
-- [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Troubleshooting](#troubleshooting)
-- [Known Issues](#known-issues)
-- [Contributing](#contributing)
-- [Development Setup](#development-setup)
+---
 
-## Screenshots
-![Example Screenshot](link_to_screenshot)  
-*Include screenshots of the application in action to give users a preview of its features.*
+## Features
 
-## Keyboard Shortcuts
-| Shortcut | Action                |
-|----------|-----------------------|
-| Ctrl + N | New file              |
-| Ctrl + S | Save file             |
-| Ctrl + Z | Undo                  |
-| Ctrl + Y | Redo                  |
-| Ctrl + C | Copy                  |
-| Ctrl + V | Paste                 |
-| Esc      | Exit tool             |
-| F1       | Help                  |
+| Tool | Description |
+|---|---|
+| ✏️ **Freehand** | Draw freely with your mouse |
+| 📏 **Line** | Click-and-drag straight lines |
+| 🌀 **Spray Can** | Soft spray effect with adjustable spread |
+| 🪞 **Mirror Draw** | Symmetrical drawing across a central axis |
+| 🧹 **Eraser** | Remove parts of your drawing |
+| 🖼️ **Stamp** | Place decorative stamps on the canvas |
+| 🎨 **Colour Picker** | Sample any colour from the canvas |
+| 🔷 **Shape** | Draw geometric shapes |
+| 📐 **Perspective** | Draw with perspective guidelines |
 
-## Troubleshooting
-- **Issue 1:** Application crashes on startup  
-  **Solution:** Ensure that your system meets the minimum requirements outlined in the Documentation.
-- **Issue 2:** Unable to save files  
-  **Solution:** Check your permissions and ensure the directory has write access.
+**Plus:**
+- 🎨 Colour palette with preset swatches + interactive colour wheel
+- ↩️ Undo / ↪️ Redo (full history)
+- 💾 Export as PNG or JPEG
+- 📂 Import an image onto the canvas
+- Brush size slider per tool
 
-## Known Issues
-- Saving large files may cause the application to lag.
-- Some keyboard shortcuts may not work on certain operating systems.
+---
 
-## Contributing
-We welcome contributions from the community! If you would like to contribute:
-1. Fork the repository.
-2. Create a new branch for your feature or fix.
-3. Submit a pull request explaining your changes.
+## Getting Started
 
-For more detailed guidelines, please see the CONTRIBUTING.md file.
+DrawApp runs entirely in the browser — no build step or install needed.
 
-## Development Setup
-To set up the development environment for DrawApp, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/Katerina137/DrawApp.git
+   cd DrawApp
    ```
-2. Install the required dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm start
-   ```
-4. Open your browser and navigate to `http://localhost:3000` to view the application.
 
-If you encounter any issues, feel free to reach out to the maintainers of the project.
+2. Serve the files with any local server. For example, with VS Code:
+   - Install the **Live Server** extension
+   - Right-click `index.html` → **Open with Live Server**
 
-Happy drawing!
+   Or via Python:
+   ```bash
+   python3 -m http.server 5500
+   ```
+
+3. Open `http://localhost:5500` in your browser.
+
+> **Note:** Opening `index.html` directly as a `file://` URL may cause issues loading assets. Always use a local server.
+
+---
+
+## Project Structure
+
+```
+DrawApp/
+├── index.html              # App entry point
+├── sketch.js               # p5.js setup, draw loop, event routing
+├── toolbox.js              # Tool registry and sidebar rendering
+├── helperFunctions.js      # Undo/redo, save, clear logic
+├── style.css               # All styling
+├── tools/                  # Individual tool implementations
+│   ├── freehandTool.js
+│   ├── lineToTool.js
+│   ├── sprayCanTool.js
+│   ├── mirrorDrawTool.js
+│   ├── eraserTool.js
+│   ├── stampTool.js
+│   ├── colorPickerTool.js
+│   ├── shapeTool.js
+│   ├── perspectiveTool.js
+│   ├── colourPalette.js
+│   └── colorWheel.js
+├── assets/                 # Stamp images and tool icons
+└── lib/                    # p5.js library files
+```
+
+---
+
+## Adding Your Own Tool
+
+Each tool is a constructor function exposing a standard interface:
+
+```js
+function MyTool() {
+  this.name = "myTool";
+  this.icon = "assets/myTool.png";
+
+  this.draw = function () { /* called every frame */ };
+  this.onSelect = function () { /* called when tool is activated */ };
+  this.onDeselect = function () { /* cleanup when switching away */ };
+  this.populateOptions = function () { /* fill the options panel */ };
+}
+```
+
+Register it in `sketch.js`:
+```js
+toolbox.addTool(new MyTool());
+```
+
+---
+
+## Built With
+
+- [p5.js](https://p5js.org/) — creative coding library for canvas drawing
+- [iro.js](https://iro.js.org/) — colour wheel component
+
+---
+
+## Author
+
+Katerina — [@Katerina137](https://github.com/Katerina137)
