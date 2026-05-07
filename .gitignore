@@ -1,12 +1,10 @@
-# Visual Studio
-.vs/
-bin/
-obj/
-*.user
-*.suo
-*.sln.docstates
-.vscode/
-
+# macOS
 .DS_Store
 .DS_Store?
 **/.DS_Store
+
+# Editor
+.vscode/
+
+# Logs
+*.log
